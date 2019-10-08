@@ -1,12 +1,12 @@
                                                 close all;
 %                                                 clear all;
-%% Диаграммы направленности
+%% Р”РёР°РіСЂР°РјРјС‹ РЅР°РїСЂР°РІР»РµРЅРЅРѕСЃС‚Рё
 %%
-                                        x3d = 0;    %Диаграммы в 3D
-                                        x2d =1;     % Диаграммы в 2D
-lam = 0.18;       %Рабочая
-% lam =0.1968;    %Нижняя
-% lam =0.1637;    %Верхняя
+                                        x3d = 0;    %Р”РёР°РіСЂР°РјРјС‹ РІ 3D
+                                        x2d =1;     % Р”РёР°РіСЂР°РјРјС‹ РІ 2D
+lam = 0.18;       %Р Р°Р±РѕС‡Р°СЏ
+% lam =0.1968;    %РќРёР¶РЅСЏСЏ
+% lam =0.1637;    %Р’РµСЂС…РЅСЏСЏ
 %%
                                           teta = -pi/2:0.01:pi/2; 
 %                                           teta = 0.6109:0.0001:0.7505; 
@@ -15,12 +15,12 @@ lam = 0.18;       %Рабочая
 k = 2*pi/lam;
 Nx = 3;  %
 Ny = 6;  % 
-dx =0.09;   %(Dx) расстояние между соседними излучателями по оси OX
-dy = 0.045; % (Dy) расстояние между соседними излучателями по оси OX
+dx =0.09;   %(Dx) СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ СЃРѕСЃРµРґРЅРёРјРё РёР·Р»СѓС‡Р°С‚РµР»СЏРјРё РїРѕ РѕСЃРё OX
+dy = 0.045; % (Dy) СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ СЃРѕСЃРµРґРЅРёРјРё РёР·Р»СѓС‡Р°С‚РµР»СЏРјРё РїРѕ РѕСЃРё OX
 dp = 0.045;
 l=0.045;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%ДН антенной решетки в E и H плоскостях
+%%Р”Рќ Р°РЅС‚РµРЅРЅРѕР№ СЂРµС€РµС‚РєРё РІ E Рё H РїР»РѕСЃРєРѕСЃС‚СЏС…
 
 
 %E.Fp = (pi/4 * (cos(teta) - 1));
@@ -70,7 +70,7 @@ Surf.phimax = 0; Surf.amp=0;
 for k0=1:length(Surf.Phi)
 for k1=1:length(Surf.Theta) 
 Surf.S=Surf.S+1;
-%Множитель E+H
+%РњРЅРѕР¶РёС‚РµР»СЊ E+H
 Surf.Tempo =abs(sin(Nx*(k*dx*sin(Surf.Theta(k1))*cos(Surf.Phi(k0)))/2)/(sin(0.5*(k*dx*sin(Surf.Theta(k1))*cos(Surf.Phi(k0))))))*(sin(Ny*(k*dy*sin(Surf.Theta(k1))*sin(Surf.Phi(k0)))/2)/(sin(0.5*(k*dy*sin(Surf.Theta(k1))*sin(Surf.Phi(k0))))));
 
 
@@ -78,14 +78,14 @@ Surf.Tempo =abs(sin(Nx*(k*dx*sin(Surf.Theta(k1))*cos(Surf.Phi(k0)))/2)/(sin(0.5*
 % Surf.Tempo =(sin(Nx*(k*dx*sin(Surf.Theta(k1))*cos(Surf.Phi(k0)))/2)/(sin(0.5*(k*dx*sin(Surf.Theta(k1))*cos(Surf.Phi(k0))))));
 % Surf.Tempo =(sin(Ny*(k*dy*sin(Surf.Theta(k1))*sin(Surf.Phi(k0)))/2)/(sin(0.5*(k*dy*sin(Surf.Theta(k1))*sin(Surf.Phi(k0))))));
 
-%Вибратор в E
+%Р’РёР±СЂР°С‚РѕСЂ РІ E
 Surf.Tempo= Surf.Tempo* (abs( cos((pi/2) * sin(Surf.Theta(k1)))./ cos(Surf.Theta(k1))));  
 
-%Вибратор в H
+%Р’РёР±СЂР°С‚РѕСЂ РІ H
 % Surf.Tempo= Surf.Tempo* 1;
 
 Surf.Tempo= Surf.Tempo* (2 * (sin(k*dp*cos(Surf.Theta(k1)))));  
-%Земля
+%Р—РµРјР»СЏ
 % Surf.Tempo = Surf.Tempo* 4*sin(k*sin(Surf.Theta(k1))*Hsr);
 
 Surf.amp=Surf.Tempo;
@@ -117,7 +117,7 @@ end
 
 
 
-%% Графики
+%% Р“СЂР°С„РёРєРё
 if x2d == 1 
 figure, polar(teta, E.Fa);
 hold on
